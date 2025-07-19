@@ -1,10 +1,9 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { makeAnswer } from 'test/factories/make-answer'
+import { makeQuestion } from 'test/factories/make-question'
 import { InMemoryAnswerRepository } from 'test/repositories/in-memory-answers-repository'
-import { DeleteAnswerUseCase } from './delete-answer'
 import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
 import { ChooseQuestionBestAnswerUseCase } from './choose-question-best-answer'
-import { makeQuestion } from 'test/factories/make-question'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let inMemoryAnswersRepository: InMemoryAnswerRepository
@@ -28,9 +27,10 @@ describe('Choose question best A nswer', async () => {
     await inMemoryAnswersRepository.create(answer)
 
     await sut.execute({
-      authorId: answer.id.toString(),
-      answerId: question.authorId.toString()
+      authorId: question.authorId.toString(),
+      answerId: answer.id.toString()
     })
+
 
     expect(inMemoryQuestionsRepository.items[0].bestAnswerId).toEqual(answer.id)
   })
