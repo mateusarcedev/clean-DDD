@@ -19,11 +19,11 @@ describe('Fetch Recent Questions', async () => {
     await inMemoryQuestionsRepository.create(makeQuestion({ createdAt: new Date('2025-07-12T00:00:00.000Z') }))
 
 
-    const { questions } = await sut.execute({
+    const result = await sut.execute({
       page: 1,
     })
 
-    expect(questions.map(q => q.createdAt.toISOString())).toEqual([
+    expect(result.value?.questions.map(q => q.createdAt.toISOString())).toEqual([
       new Date('2025-07-12').toISOString(),
       new Date('2025-07-11').toISOString(),
       new Date('2025-07-10').toISOString()
@@ -36,11 +36,11 @@ describe('Fetch Recent Questions', async () => {
       await inMemoryQuestionsRepository.create(makeQuestion())
     }
 
-    const { questions } = await sut.execute({
+    const result = await sut.execute({
       page: 2,
     })
 
-    expect(questions).toHaveLength(2)
+    expect(result.value?.questions).toHaveLength(2)
   })
 
 
