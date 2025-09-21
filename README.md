@@ -1,59 +1,55 @@
 # Clean DDD
 
-Repositório utilizado no curso de Domain-Driven Design da [Rocketseat](https://app.rocketseat.com.br/journey/node-js-2023/contents). O objetivo é praticar a modelagem do domínio de um fórum de perguntas e respostas aplicando conceitos de DDD, testes automatizados e boas práticas de design orientado a objetos.
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](https://github.com/your-username/clean-ddd/actions)  
+[![Lint](https://img.shields.io/badge/lint-eslint-blue.svg)](https://eslint.org/)  
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)  
 
-## Visão geral
+Repository used in the [Rocketseat](https://app.rocketseat.com.br/journey/node-js-2023/contents) Domain-Driven Design course. The goal is to practice modeling a Q&A forum domain by applying DDD concepts, automated testing, and object-oriented design best practices.
 
-O projeto está organizado para que a camada de domínio seja independente de frameworks e de detalhes de infraestrutura. A pasta `src` concentra tanto os _building blocks_ reutilizáveis quanto os módulos de domínio principais:
+## Overview
 
-- `core`: abstrações compartilhadas (entidades, agregados, _value objects_, erros e helpers como `Either`).
-- `domain/forum`: regras de negócio do fórum, incluindo entidades como `Question`, `Answer` e `Comment`, além dos casos de uso (por exemplo, criação de perguntas, respostas e comentários, escolha da melhor resposta, buscas paginadas etc.).
-- `domain/notification`: contexto responsável por emitir notificações quando eventos do fórum ocorrem.
+The project is structured so that the domain layer is independent of frameworks and infrastructure details. The `src` folder contains both reusable building blocks and the main domain modules:
 
-Cada caso de uso possui testes com Vitest, garantindo que a lógica de domínio possa evoluir com segurança.
+- `core`: shared abstractions (entities, aggregates, value objects, errors, and helpers like `Either`).
+- `domain/forum`: forum business rules, including entities such as `Question`, `Answer`, and `Comment`, along with use cases (e.g., creating questions, answers, and comments, choosing the best answer, paginated searches, etc.).
+- `domain/notification`: context responsible for emitting notifications when forum events occur.
 
-## Tecnologias e ferramentas
+Each use case includes Vitest tests to ensure the domain logic can evolve safely.
 
-- Node.js + TypeScript
-- Vitest para testes unitários
-- ESLint com o padrão Rocketseat para linting
-- Vite + `vite-tsconfig-paths` para resolver os _paths_ TypeScript
+## Tech stack
 
-## Como começar
+- Node.js + TypeScript  
+- Vitest for unit testing  
+- ESLint with Rocketseat’s standard linting rules  
+- Vite + `vite-tsconfig-paths` for TypeScript path resolution  
 
-1. Instale as dependências:
+## Getting started
+
+1. Install dependencies:
 
    ```bash
    npm install
-   ```
+````
 
-2. Execute a suíte de testes para validar o comportamento do domínio:
+2. Run the test suite to validate domain behavior:
 
    ```bash
    npm test
    ```
 
-3. Opcionalmente, rode o linter para verificar o estilo do código:
+3. Optionally, run the linter to check code style:
 
    ```bash
    npm run lint
    ```
 
-## Estrutura de diretórios (resumo)
+## Directory structure (summary)
 
 ```
 src/
-├── core/                 # Building blocks de DDD reutilizáveis
+├── core/                 # Reusable DDD building blocks
 ├── domain/
-│   ├── forum/            # Contexto de fórum (entidades + casos de uso)
-│   └── notification/     # Contexto de notificações
+│   ├── forum/            # Forum context (entities + use cases)
+│   └── notification/     # Notifications context
 └── ...
 ```
-
-## Próximos passos sugeridos
-
-- Implementar adaptadores (HTTP, CLI, filas etc.) conectando a camada de domínio a uma aplicação real.
-- Persistir as entidades com um banco de dados ou em memória para exercitar repositórios concretos.
-- Expandir o modelo com novas regras de negócio e contextos delimitados.
-
-> Este repositório serve como material de estudo. Fique à vontade para explorar, adaptar e evoluir o código enquanto acompanha as aulas do curso.
